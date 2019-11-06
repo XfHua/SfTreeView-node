@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            mc:Ignorable="d"
+            xmlns:views="clr-namespace:App36.Views"
+                  xmlns:syncfusion="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms"
+                  xmlns:treeviewengine="clr-namespace:Syncfusion.TreeView.Engine;assembly=Syncfusion.SfTreeView.XForms"
+                  x:Class="App36.Views.MainPage">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" Padding="0">
+            <ContentPage.Content>
+                <StackLayout>
+                    <Grid BackgroundColor="LightGreen">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1"
+                               Grid.Row="2"
+                               Text="DEC App"
+                               TextColor="White"
+                               FontSize="Large"/>
+                    </Grid>
+                    <syncfusion:SfTreeView x:Name="treeView" ItemTapped="treeView_ItemTapped">
+                        <syncfusion:SfTreeView.Nodes>
+                            <!--1st Menu-->
+                            <treeviewengine:TreeViewNode Content="Menu 1">
+                                <treeviewengine:TreeViewNode.ChildNodes>
+                                    <treeviewengine:TreeViewNode Content="Menu 1.1">
+                                        <!--SubMenu 1-->
+                                    </treeviewengine:TreeViewNode>
+                                    <treeviewengine:TreeViewNode Content="Menu 1.2">
+                                        <!--SubMenu 2-->
+                                        <treeviewengine:TreeViewNode.ChildNodes>
+                                            <treeviewengine:TreeViewNode Content="Menu 1.2.1"/>
+                                            <!--SubMenu 2.1-->
+                                            <treeviewengine:TreeViewNode Content="Menu 1.2.2"/>
+                                            <!--SubMenu 2.2-->
+                                        </treeviewengine:TreeViewNode.ChildNodes>
+                                    </treeviewengine:TreeViewNode>
+                                </treeviewengine:TreeViewNode.ChildNodes>
+                            </treeviewengine:TreeViewNode>
+                        </syncfusion:SfTreeView.Nodes>
+                    </syncfusion:SfTreeView>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:ItemsPage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+    
+</MasterDetailPage>
